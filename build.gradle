@@ -20,6 +20,7 @@ ext {
     navigationVersion = '2.5.2'
     okhttpVersion = '4.9.0'
     retrofitVersion = '2.9.0'
+    roomVersion = '2.4.3'
     truthVersion = '1.1.3'
 }
 
