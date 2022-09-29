@@ -24,6 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,20 +43,26 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     // Dagger Hilt
-    implementation 'com.google.dagger:hilt-android:2.42'
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation 'androidx.test:runner:1.4.0'
-    kapt 'com.google.dagger:hilt-compiler:2.42'
+    androidTestImplementation project(path: ':app')
+    annotationProcessor "com.google.dagger:hilt-compiler:$hiltVersion"
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // OKHTTP
     implementation platform("com.squareup.okhttp3:okhttp-bom:4.10.0")
-    implementation "com.squareup.okhttp3:okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
     //
     // Testing
@@ -61,14 +71,18 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    testImplementation 'com.google.truth:truth:1.1.3'
-    androidTestImplementation 'com.google.truth:truth:1.1.3'
+    testImplementation "com.google.truth:truth:$truthVersion"
+    androidTestImplementation "com.google.truth:truth:$truthVersion"
 
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.42'
-    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.42'
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$hiltVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hiltVersion"
 
-    testImplementation 'com.google.dagger:hilt-android-testing:2.42'
-    kaptTest 'com.google.dagger:hilt-compiler:2.42'
+    testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
+    kaptTest "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
+
 }
 
 kapt {

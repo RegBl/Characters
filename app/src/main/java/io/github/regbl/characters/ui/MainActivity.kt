@@ -1,8 +1,9 @@
-package io.github.regbl.characters
+package io.github.regbl.characters.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.regbl.characters.R
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

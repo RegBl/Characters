@@ -4,73 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/tvCharacterClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:textSize="32dp"
-        android:text="Character Class"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
-    <TextView
-        android:id="@+id/tvStrength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="STR:"
-        app:layout_constraintTop_toTopOf="@+id/tvIntelligence"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvIntelligence" />
-
-    <TextView
-        android:id="@+id/tvIntelligence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="INT:"
-        app:layout_constraintTop_toBottomOf="@+id/tvCharacterClass"
-        app:layout_constraintEnd_toStartOf="@+id/tvWisdom"
-        app:layout_constraintStart_toEndOf="@+id/tvStrength" />
-
-    <TextView
-        android:id="@+id/tvWisdom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="WIS:"
-        app:layout_constraintTop_toTopOf="@+id/tvIntelligence"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvIntelligence" />
-
-    <TextView
-        android:id="@+id/tvDexterity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="DEX:"
-        app:layout_constraintTop_toTopOf="@+id/tvConstitution"
-        app:layout_constraintStart_toStartOf="@+id/tvStrength"/>
-
-    <TextView
-        android:id="@+id/tvConstitution"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="CON:"
-        app:layout_constraintTop_toBottomOf="@+id/tvIntelligence"
-        app:layout_constraintStart_toStartOf="@+id/tvIntelligence" />
-
-    <TextView
-        android:id="@+id/tvCharisma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="CHA:"
-        app:layout_constraintTop_toTopOf="@+id/tvConstitution"
-        app:layout_constraintStart_toStartOf="@+id/tvWisdom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

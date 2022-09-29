@@ -5,24 +5,24 @@ import io.github.regbl.characters.service.responses.Attr
 import io.github.regbl.characters.service.responses.CharacterResponse
 import io.github.regbl.characters.service.responses.Saves
 
-class FakeShoppingRepository : RandomCharacterRepository {
+class FakeRandomCharacterRepository : RandomCharacterRepository {
     private val randomCharacter = CharacterResponse(
-        ac = 7,
+        ac = 8,
         appearance = "",
         attr = Attr(
             STR = "13",
-            INT = "10",
+            INT = "11",
             WIS = "9",
             DEX = "10",
-            CON = "11",
+            CON = "8",
             CHA = "14"
         ),
         attributes = listOf(
             listOf("STR", 13),
-            listOf("INT", 10),
+            listOf("INT", 11),
             listOf("WIS", 9),
             listOf("DEX", 10),
-            listOf("CON", 11),
+            listOf("CON", 8),
             listOf("CHA", 14),
         ),
         characterClass = "Fighter",
