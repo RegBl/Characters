@@ -10,14 +10,3 @@ data class Attr(
     val STR: String,
     val WIS: String
 )
-
-fun Attr.toAttributes(): Attributes {
-    return Attributes(
-        strength = STR.toInt(),
-        dexterity = DEX.toInt(),
-        constitution = CON.toInt(),
-        intelligence = INT.toInt(),
-        wisdom = WIS.toInt(),
-        charisma = CHA.toInt()
-    )
-}

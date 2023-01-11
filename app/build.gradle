@@ -53,7 +53,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation 'androidx.test:runner:1.4.0'
     androidTestImplementation project(path: ':app')
-    annotationProcessor "com.google.dagger:hilt-compiler:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"

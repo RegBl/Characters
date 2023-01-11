@@ -1,6 +1,7 @@
 package io.github.regbl.characters.service.responses
 
 import com.google.gson.annotations.SerializedName
+import io.github.regbl.characters.data.model.Attributes
 import io.github.regbl.characters.data.model.Character
 
 data class CharacterResponse(
@@ -28,7 +29,8 @@ data class CharacterResponse(
 
 fun CharacterResponse.toCharacter(): Character {
     return Character(
-        attributes = this.attr.toAttributes(),
+        id = 0,
+        attributes = Attributes.fromAttributeMap(this.attributes),
         saves = this.saves.toSaves(),
         characterClass = this.characterClass,
         level = 1,

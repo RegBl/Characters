@@ -5,19 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.regbl.characters.databinding.FragmentRandomCharacterBinding
 
+@AndroidEntryPoint
 class RandomCharacterFragment : Fragment() {
 
-    lateinit var viewModel: RandomCharacterViewModel
+    private val viewModel: RandomCharacterViewModel by viewModels()
     private var _binding: FragmentRandomCharacterBinding? = null
     private val binding get() = _binding!!
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[RandomCharacterViewModel::class.java]
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +25,7 @@ class RandomCharacterFragment : Fragment() {
         val view = binding.root
 
         binding.randomCharacterViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         return view
     }

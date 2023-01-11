@@ -1,9 +1,6 @@
 package io.github.regbl.characters.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.regbl.characters.other.Event
 import io.github.regbl.characters.other.Resource
@@ -12,6 +9,7 @@ import io.github.regbl.characters.repositories.RandomCharacterRepository
 import io.github.regbl.characters.service.responses.Attr
 import io.github.regbl.characters.service.responses.CharacterResponse
 import io.github.regbl.characters.service.responses.Saves
+import io.github.regbl.characters.service.responses.toCharacter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +20,9 @@ class RandomCharacterViewModel @Inject constructor(
     private val _randomCharacter = MutableLiveData<Event<Resource<CharacterResponse>>>()
     val randomCharacter: LiveData<Event<Resource<CharacterResponse>>> = _randomCharacter
 
-    val staticRandomCharacter = randomCharacter.value
+    val staticRandomCharacter = Transformations.map(_randomCharacter) {
+        it.peekContent().data?.toCharacter()
+    }
 
     init {
         getRandomCharacter()
@@ -32,18 +32,18 @@ class RandomCharacterViewModel @Inject constructor(
         _randomCharacter.value = Event(Resource.loading(null))
         viewModelScope.launch {
             val response = repository.getRandomCharacter()
-            _randomCharacter.value = Event(response)
-//            try {
-//                _randomCharacter.value = Event(repository.getRandomCharacter())
-//            } catch (e: Exception) {
-//                _randomCharacter.value = Event(
-//                    Resource(
-//                        Status.ERROR,
-//                        defaultCharacterResponse,
-//                        "Unknown error. Here's a default character."
-//                    )
-//                )
-//            }
+            _randomCharacter.postValue(Event(response))
+            try {
+                _randomCharacter.value = Event(repository.getRandomCharacter())
+            } catch (e: Exception) {
+                _randomCharacter.value = Event(
+                    Resource(
+                        Status.ERROR,
+                        defaultCharacterResponse,
+                        "Unknown error. Here's a default character."
+                    )
+                )
+            }
         }
     }
 

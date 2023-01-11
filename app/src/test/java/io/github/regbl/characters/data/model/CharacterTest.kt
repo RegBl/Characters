@@ -23,6 +23,7 @@ class CharacterTest {
     )
 
     private val character = Character(
+        id = 0,
         attributes,
         saves,
         "Fighter",

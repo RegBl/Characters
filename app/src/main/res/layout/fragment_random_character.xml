@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="STR:"
+            android:text='@{"STR: " + randomCharacterViewModel.staticRandomCharacter.attributes.strength}'
             app:layout_constraintTop_toTopOf="@+id/tvIntelligence"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvIntelligence" />
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="INT:"
+            android:text='@{"INT: " + randomCharacterViewModel.staticRandomCharacter.attributes.intelligence}'
             app:layout_constraintTop_toBottomOf="@+id/tvCharacterClass"
             app:layout_constraintEnd_toStartOf="@+id/tvWisdom"
             app:layout_constraintStart_toEndOf="@+id/tvStrength" />
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="WIS:"
+            android:text='@{"WIS: " + randomCharacterViewModel.staticRandomCharacter.attributes.wisdom}'
             app:layout_constraintTop_toTopOf="@+id/tvIntelligence"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvIntelligence" />
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="DEX:"
+            android:text='@{"DEX: " + randomCharacterViewModel.staticRandomCharacter.attributes.dexterity}'
             app:layout_constraintTop_toTopOf="@+id/tvConstitution"
             app:layout_constraintStart_toStartOf="@+id/tvStrength" />
 
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="CON:"
+            android:text='@{"CON: " + randomCharacterViewModel.staticRandomCharacter.attributes.constitution}'
             app:layout_constraintTop_toBottomOf="@+id/tvIntelligence"
             app:layout_constraintStart_toStartOf="@+id/tvIntelligence" />
 
@@ -78,8 +78,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="CHA:"
+            android:text='@{"CHA: " + randomCharacterViewModel.staticRandomCharacter.attributes.charisma}'
             app:layout_constraintTop_toTopOf="@+id/tvConstitution"
             app:layout_constraintStart_toStartOf="@+id/tvWisdom" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/btn_get_new_character"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
