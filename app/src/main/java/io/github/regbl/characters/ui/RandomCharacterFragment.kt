@@ -27,6 +27,8 @@ class RandomCharacterFragment : Fragment() {
         binding.randomCharacterViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.button.setOnClickListener { viewModel.getRandomCharacter() }
+
         return view
     }
 

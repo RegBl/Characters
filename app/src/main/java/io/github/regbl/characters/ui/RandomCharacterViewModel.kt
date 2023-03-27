@@ -28,11 +28,8 @@ class RandomCharacterViewModel @Inject constructor(
         getRandomCharacter()
     }
 
-    private fun getRandomCharacter() {
-        _randomCharacter.value = Event(Resource.loading(null))
+    fun getRandomCharacter() {
         viewModelScope.launch {
-            val response = repository.getRandomCharacter()
-            _randomCharacter.postValue(Event(response))
             try {
                 _randomCharacter.value = Event(repository.getRandomCharacter())
             } catch (e: Exception) {
