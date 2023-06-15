@@ -16,6 +16,9 @@ interface CharacterDao {
     @Query("SELECT * FROM character WHERE id = :characterId")
     fun getCharacter(characterId: Int): Flow<Character>
 
+    @Query("SELECT * FROM character ORDER BY id DESC LIMIT 1")
+    fun getLatestCharacter(): Character
+
     @Delete
     suspend fun deleteCharacter(character: Character)
 }

@@ -2,6 +2,7 @@ package io.github.regbl.characters.ui
 
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.regbl.characters.data.model.Character
 import io.github.regbl.characters.other.Event
 import io.github.regbl.characters.other.Resource
 import io.github.regbl.characters.other.Status
@@ -17,11 +18,11 @@ import javax.inject.Inject
 class RandomCharacterViewModel @Inject constructor(
     private val repository: RandomCharacterRepository
 ) : ViewModel() {
-    private val _randomCharacter = MutableLiveData<Event<Resource<CharacterResponse>>>()
-    val randomCharacter: LiveData<Event<Resource<CharacterResponse>>> = _randomCharacter
+    private val _randomCharacter = MutableLiveData<Event<Resource<Character>>>()
+    val randomCharacter: LiveData<Event<Resource<Character>>> = _randomCharacter
 
     val staticRandomCharacter = Transformations.map(_randomCharacter) {
-        it.peekContent().data?.toCharacter()
+        it.peekContent().data
     }
 
     init {
@@ -36,7 +37,7 @@ class RandomCharacterViewModel @Inject constructor(
                 _randomCharacter.value = Event(
                     Resource(
                         Status.ERROR,
-                        defaultCharacterResponse,
+                        defaultCharacterResponse.toCharacter(),
                         "Unknown error. Here's a default character."
                     )
                 )
